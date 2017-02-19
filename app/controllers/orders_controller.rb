@@ -52,7 +52,9 @@ class OrdersController < ApplicationController
         )
       end
     end
-    order.save!
+    if order.save!
+      UserMailer.order_report(order).deliver_later
+    end
     order
   end
 

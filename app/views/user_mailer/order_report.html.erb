@@ -1,13 +1,14 @@
-<section class="orders-show">
-
-  <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
-  </header>
-
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order! This receipt has been sent to your email.</h4>
-    <div class="panel panel-default items">
-      <table class="table table-bordered">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order Report</h1>
+    <p>
+      Dear User, You have successfully placed an order in jungle.com.<br>
+    </p>
+   <table class="table table-bordered">
         <thead>
           <tr>
             <th colspan="2">Product</th>
@@ -18,7 +19,7 @@
         </thead>
         <tbody>
           <% @order_total = 0 %>
-          <% @line_item = LineItem.where(order_id: params[:id]) %>
+          <% @line_item = LineItem.where(order_id: @order.id) %>
           <% @line_item.each do |p| %>
             <%= render 'item', product_id: p.product_id, qty: p.quantity %>
           <% end %>
@@ -37,14 +38,11 @@
               Order by:
             </th>
             <th>
-              <%=  Order.find(params[:id]).email %>
+              <%=  Order.find(@order.id).email %>
             </th>
           </tr>
         </tfoot>
       </table>
-    </div>
-  </div>
-
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
-
-</section>
+    <p>Thanks for ordering and have a great day!</p>
+  </body>
+</html>
