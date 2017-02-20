@@ -27,11 +27,26 @@
     </div>
 
     <div class="row">
+      <h2>Review</h2>
+      <% if current_user != nil %>
+        <%= form_for [@product, @review] do |f| %>
+          <%= f.text_area :description %>
+          <%= f.select :rating, [1, 2, 3, 4, 5] %>
+          <%= f.submit "Create" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="row">
       <% @reviews.each do |r| %>
         <div>
           <p><%= r.user.first_name %></p>
           <p>Rating: <%= r.rating %></p>
           <p><%= r.description %> </p>
+          <p><%= link_to 'Destroy Review', product_review_path(@product, r),
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+          </p>
         </div>
       <% end %>
     </div>
