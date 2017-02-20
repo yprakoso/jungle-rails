@@ -22,7 +22,6 @@
         <tbody>
           <% @cart_total = 0 %>
           <% cart.each do |product_id, details| %>
-            <p>test</p>
             <%= render 'item', product_id: product_id, details: details %>
           <% end %>
         </tbody>
