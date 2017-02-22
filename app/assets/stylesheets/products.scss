@@ -72,6 +72,7 @@ main section.categories-show {
         }
       }
 
+
     }
   }
 }
@@ -83,6 +84,50 @@ main section.products-show {
       max-width: 100%;
     }
   }
+  .reviewTitle {
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .description-text-area {
+    width: 100%;
+  }
+  .rating-select {
+    display: inline;
+  }
+  .create-button {
+    display: inline;
+    float: right;
+  }
+  .review-block {
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 2px 5px;
+  }
+  .reviewer {
+    display: inline;
+    font-size: 120%;
+    font-weight: bold;
+  }
+  .review-rating {
+    display: inline;
+    float: right;
+  }
+  .review-description {
+    padding: 4px 12px;
+  }
+  .review-delete-button {
+    display: inline;
+    background-color: #eeeeee;
+    border-radius: 10px;
+    padding: 2px 5px;
+    border: 2px 4px;
+
+    &:hover {
+       background-color: #eeddff;
+    }
+  }
 }
+
 
 

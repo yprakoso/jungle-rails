@@ -1,4 +1,4 @@
-<section class="products-show">
+ <section class="products-show">
 
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
@@ -15,8 +15,8 @@
       <div class="col-sm-8">
         <dl class="dl-horizontal">
           <dt>Name</dt>
+          <dt>Description</dt>R
           <dd><%= @product.name %></dd>
-          <dt>Description</dt>
           <dd><%= @product.description %></dd>
           <dt>Quantity</dt>
           <dd><%= @product.quantity %></dd>
@@ -27,28 +27,34 @@
     </div>
 
     <div class="row">
-      <h2>Review</h2>
-      <% if current_user != nil %>
-        <%= form_for [@product, @review] do |f| %>
-          <%= f.text_area :description %>
-          <%= f.select :rating, [1, 2, 3, 4, 5] %>
-          <%= f.submit "Create" %>
-        <% end %>
-      <% end %>
+      <div class="col-sm-12">
+        <h2 class="reviewTitle">Review</h2>
+      </div>
     </div>
 
     <div class="row">
-      <% @reviews.each do |r| %>
-        <div>
-          <p><%= r.user.first_name %></p>
-          <p>Rating: <%= r.rating %></p>
-          <p><%= r.description %> </p>
-          <p><%= link_to 'Destroy Review', product_review_path(@product, r),
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-          </p>
-        </div>
-      <% end %>
+      <div class="col-sm-4">
+        <% if current_user != nil %>
+          <%= form_for [@product, @review] do |f| %>
+            <div class="description-text-area"><%= f.text_area :description %></div>
+            <div class="rating-select"><%= f.select :rating, [1, 2, 3, 4, 5] %></div>
+            <div class="create-button"><%= f.submit "Create Review" %></div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <% @reviews.each do |r| %>
+          <div class="review-block">
+            <p class="reviewer"><%= r.user.first_name %></p>
+            <p class="review-rating">Rating: <%= r.rating %></p>
+            <p class="review-description"><%= r.description %> </p>
+            <p class="review-delete-button"><%= link_to 'Delete Review', product_review_path(@product, r),
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
+            </p>
+          </div>
+        <% end %>
+      </div>
     </div>
 
   </article>
