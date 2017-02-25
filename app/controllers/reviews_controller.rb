@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.new(review_params)
     @review.user = current_user
     if @review.save
-      redirect_to root_path
+      redirect_to :back
     else
       redirect_to :back
     end
