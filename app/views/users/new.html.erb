@@ -1,5 +1,9 @@
 <h1>Signup!</h1>
 
+<% flash.each do |name, msg| -%>
+  <script type="text/javascript">window.alert("Email already registered, please use another email."); </script>
+<% end %>
+
 <%= form_for :user, url: '/users' do |f| %>
 
   First Name: <%= f.text_field :first_name %>
